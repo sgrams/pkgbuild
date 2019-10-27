@@ -5,7 +5,7 @@
 pkgname=gnuradio-osmosdr
 _pkgname=gr-osmosdr
 _r=128
-_commit=146ba10e0823c8408ef6ac5cdb437f401f1032ff
+_commit=7da9989b7a803372806214cc1e49690a848fed26
 pkgver=0.1.5.r$_r.${_commit:0:7}
 pkgrel=3
 pkgdesc='Source block for Funcube Dongle, RTL-SDR, USRP, OsmoSDR, BladeRF, HackRF and AirSpy devices'
