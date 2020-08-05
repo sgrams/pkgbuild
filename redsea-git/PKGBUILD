@@ -1,0 +1,33 @@
+# Maintainer: Stanislaw Grams <sjg@fmdx.pl>
+
+pkgname=redsea-git
+pkgver=20200805
+pkgrel=1
+pkgdesc="a lightweight command-line FM-RDS decoder for Linux/macOS"
+arch=('x86_64')
+url="https://github.com/windytan/redsea"
+license=('MIT')
+depends=('libsndfile' 'liquid-dsp')
+provides=('redsea')
+conflicts=('redsea')
+makedepends=('git' 'liquid-dsp' 'autoconf' 'automake' 'libsndfile')
+source=("git+https://github.com/windytan/redsea")
+md5sums=('SKIP')
+_gitname="redsea"
+
+pkgver() {
+  cd "$srcdir/$_gitname"
+  git show -s --format="%ci" HEAD | sed -e 's/-//g' -e 's/ .*//'
+}
+
+build() {
+  cd "$srcdir/$_gitname"
+  ./autogen.sh
+  ./configure
+  make
+}
+
+package() {
+  cd "$srcdir/$_gitname"
+  make DESTDIR="$pkgdir" install
+}
